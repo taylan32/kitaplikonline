@@ -1,10 +1,8 @@
-package com.kitaplik.libraryservice.client;
-
-import org.springframework.http.HttpStatus;
+package com.kitaplik.libraryservice.exception;
 
 public record ExceptionMessage(
         String timestamp,
-        HttpStatus httpstatus,
+        int httpstatus,
         String error,
         String message,
         String path

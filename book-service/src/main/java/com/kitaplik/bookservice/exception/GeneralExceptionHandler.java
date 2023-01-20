@@ -31,11 +31,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<Object> handleBookNotFoundException(BookNotFoundException exception) {
-        Map<String, Object> errors = new HashMap<>();
-        errors.put("httpstatus", HttpStatus.NOT_FOUND);
-        errors.put("timestamp", new Date().toString());
-        errors.put("message", exception.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
 }
