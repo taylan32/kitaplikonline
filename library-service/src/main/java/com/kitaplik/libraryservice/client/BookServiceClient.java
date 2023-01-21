@@ -35,7 +35,10 @@ public interface BookServiceClient {
 
     default ResponseEntity<BookDto> getBookByIdFallBack(String bookId, Exception exception) {
         return ResponseEntity.ok(new BookDto(
-                new BookIdDto("default-book", "default-isbn"),
+                new BookIdDto(
+                        "default-book",
+                        "default-isbn"
+                ),
                 "default-title",
                 0,
                 "default-author",
