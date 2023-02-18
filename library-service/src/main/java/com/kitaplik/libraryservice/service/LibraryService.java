@@ -25,8 +25,7 @@ public class LibraryService {
     }
 
     public LibraryDto getAllBooksInLibraryById(String id) {
-        Library library = libraryRepository.findById(id)
-                .orElseThrow(() -> new LibraryNotFoundException("Library could not found by id: " + id));
+        Library library = getLibraryById(id);
 
         LibraryDto libraryDto = new LibraryDto(library.getId(), library
                 .getUserBook()
@@ -39,6 +38,10 @@ public class LibraryService {
         return libraryDto;
     }
 
+    private Library getLibraryById(String id) {
+        return libraryRepository.findById(id)
+                .orElseThrow(() -> new LibraryNotFoundException("Library could not found by id " + id));
+    }
 
     public LibraryDto createLibrary() {
         Library newLibrary = libraryRepository.save(new Library(null, new ArrayList<>()));
